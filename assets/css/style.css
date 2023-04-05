@@ -1,0 +1,177 @@
+/* Set root font size so we can use it as a reference point as we create for mobile, desktop, and tablet views (responsive layouts/display) */
+
+/* 
+    rem unit explanation
+    -   1 rem means (1 * root(pixels)
+        In this css sheet, I set the root font-size to 20px
+        This means 1rem in this css sheet is == 20px
+        2rem would be 40px
+        1.5rem would be 30px 
+        etc...
+        This is why it is good to use this unit. It recalculates the pixels based on a root (predetermined) value. Which here I used 20px or (20px === 1rem)
+*/
+html{
+    font-size: 20px;
+}
+/* Since it is a mobile first design, we start building it as a mobile view, lets set the whole body to a column view and `flex:1; makes the elements fill the remaining space */
+body{
+    background-color: rgb(82, 167, 222);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+/* using our imported fonts in the index.html file, we set the style for the H1 title of the web app */
+.title{
+    padding: 10px;
+    font-size: 2.5rem;
+    text-align: center;
+    color: aliceblue;
+    background-color: rgba(255, 255, 255, 0.222);
+    font-family: "Luckiest Guy", cursive;
+    color: rgb(218, 208, 76);
+    text-shadow: 2px 2px black;
+}
+/* Nothing fancy just simple styling rules to the start button */
+.start, .stop{
+    padding: 5px 5px 15px 5px;
+    margin: 3px 3px 9px 3px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background-color: rgb(132, 131, 136);
+    color: white;
+    text-shadow: 3px 3px black;
+    border: 3px solid black;
+    border-radius: 10px;
+
+}
+/* slightly change the styling when the button is hovered over */
+#start:hover{
+    background-color: rgb(205, 131, 60);
+    color: rgb(218, 208, 76);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-shadow: 3px 3px black;
+    box-shadow: 0 0 3px 3px rgb(218, 208, 76);
+}
+/* Display the quiz container flex and column to stack our elements flex and fill along with wrap each item inside */
+.quiz-container{
+    display: flex;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.402);
+    flex-direction: column;
+    flex: 1;
+    flex-wrap: wrap;
+    
+}
+/* basic styling for the question being asked/displayed at the time */
+.question{
+    background-color: chocolate;
+    border: 1.5px solid black;
+    color: rgb(218, 208, 76);
+    text-shadow: 2px 2px black;
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    padding:16px 4px 16px 4px;
+    margin:3px;
+    border-radius: 8px;
+}
+/* basic styling for the answers to the question */
+.answer{
+    padding: 5px;
+    margin: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: rgb(132, 131, 136);
+    color: white;
+    text-shadow: 3px 3px black;
+    border: 3px solid black;
+    
+}
+/* slightly change the styling when the button is hovered over */
+.answer:hover{
+    background-color: rgb(205, 131, 60);
+    color: rgb(218, 208, 76);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-shadow: 3px 3px black;
+    box-shadow: 0 0 3px 3px rgb(218, 208, 76);
+}
+/* For the timer, we set it to a display of flex and column to stack our timer. Notice no flex:1 here so it doesn't take up all the remaining space. Controlling the amount it can group for a smaller tighter count down timer. Also used text and other properties of flex container and just plain text centering to get it right in the middle */
+.timer-container{
+    flex-direction: column;
+    display: none;
+    color: white;
+    margin: 3px;
+    padding: 2px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+/* Basic styling for the element holding the actual value of the timer. Above is the container holding the timer and this is the actual <h> element holding the value of time */
+.timer{
+    background-color: black;
+    border: 2px solid rgba(255, 255, 255, 0.765);
+    width: max-content;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 6px;
+}
+/* display the info-container holding the score and initials into flex column so they stack instead of side by side and basic styling */
+.info-container{
+    display: flex;
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    background-color: rgb(114, 114, 104);
+    margin: 3px;
+    padding: 2px;
+}
+/* nothing here but basic styling rules as well. Colors to make it pop */
+.score{
+    background-color: rgba(221, 11, 221, 0.837);
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+    box-shadow: 0 0 3px 3px rgb(0, 0, 0);
+    margin: 3px;
+}
+/* Same as score just to make it bright and stand out. I did put more margin on top so allow the background to seep through. a bit. Basic styling rules as well */
+.initials{
+    background-color: rgba(241, 27, 144, 0.837);
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+    box-shadow: 0 0 3px 3px rgb(0, 0, 0);
+    margin: 10px 3px 2px 3px;
+}
+
+/* Added our media query to resize and make our elements responsive */
+@media only screen and (min-width: 768px) {
+    body {
+      background-color: rgb(65, 157, 219);
+    }
+    .title{
+        font-size: 4rem;
+    }
+    /* resize all of our contianers include the start button below to make it responsive */
+    .quiz-container, .timer-container, .info-container{
+        width:60%;
+        align-self: center;
+
+    }
+    .start{
+        display:flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content:space-around;
+        margin-left:20%;
+        margin-right: 20%;
+        text-align: center;
+    }
+  }

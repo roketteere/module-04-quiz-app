@@ -1,0 +1,79 @@
+{
+    "quiz": [
+      {
+        "question": "Who is the main protagonist of the Naruto series?",
+        "answers": ["Sasuke", "Naruto", "Kakashi", "Sakura"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "What is the name of Naruto's father?",
+        "answers": ["Jiraiya", "Minato", "Orochimaru", "Hiruzen"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "What is the name of Naruto's mother?",
+        "answers": ["Kushina", "Mikoto", "Tsunade", "Inoichi"],
+        "correctAnswer": 0
+      },
+      {
+        "question": "What is the name of the Nine-Tailed Fox that attacked Konoha?",
+        "answers": ["Kurama", "Isobu", "Matatabi", "Gyuki"],
+        "correctAnswer": 0
+      },
+      {
+        "question": "What is the name of Naruto's signature technique?",
+        "answers": [
+          "Rasengan",
+          "Chidori",
+          "Fireball Jutsu",
+          "Shadow Clone Jutsu"
+        ],
+        "correctAnswer": 0
+      },
+      {
+        "question": "What is the name of the Hidden Village where Naruto lives?",
+        "answers": ["Sunagakure", "Konohagakure", "Kirigakure", "Iwagakure"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Who is the first Hokage of Konoha?",
+        "answers": [
+          "Tobirama Senju",
+          "Hashirama Senju",
+          "Hiruzen Sarutobi",
+          "Danzo Shimura"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Who is the second Hokage of Konoha?",
+        "answers": [
+          "Tobirama Senju",
+          "Hashirama Senju",
+          "Hiruzen Sarutobi",
+          "Danzo Shimura"
+        ],
+        "correctAnswer": 0
+      },
+      {
+        "question": "Who is the third Hokage of Konoha?",
+        "answers": [
+          "Tobirama Senju",
+          "Hashirama Senju",
+          "Hiruzen Sarutobi",
+          "Danzo Shimura"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Who is the current Hokage of Konoha?",
+        "answers": [
+          "Kakashi Hatake",
+          "Tsunade Senju",
+          "Naruto Uzumaki",
+          "Shikamaru Nara"
+        ],
+        "correctAnswer": 2
+      }
+    ]
+}
