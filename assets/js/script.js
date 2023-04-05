@@ -7,6 +7,7 @@ var currentQuestionIndex = 0;
 var correct = null;
 var clicked = null;
 var amount = 10;
+var isSave = false;
 // score variable to keep track of score
 var highScore = 0;
 var score = 0;
@@ -20,20 +21,24 @@ var loadedQuiz = [];
 
 var quizQuestions = fetch('assets/json/questions.json').then((response) => response.json()).then((data) => {
     var newData  = JSON.stringify(data);
+    
     localStorage.setItem('quiz-data', newData);
     loadedQuiz = JSON.parse(localStorage.getItem('quiz-data'));
     if('quiz-data' )
     console.log('newData', newData);
-    if('user-data'){
-        scoreCard.textContent = localStorage('user-score')
-    }
+    // if('user-initial'){
+    //     userInitials.inputedInitials.push(localStorage.getItem('user-score'));
+    //     scored.push(localStorage.getItem('user-score'));
+    //     scored.sort()
+    //     scoreCard.textContent 
+    // }
    
   
 });
 
 // get our start button
 var startButton = document.querySelector('#start');
-var stopButton = document.querySelector('#stop');
+var saveButton = document.querySelector('#save');
 
 // get hidden container reference variables
 var quizContainer = document.querySelector('#quiz');
@@ -96,6 +101,8 @@ function displayQuiz(){
 function timerStart(){
     displayQuiz();
     correct = insertQuizItems(loadedQuiz,currentQuestionIndex);
+    inputedInitials.push(localStorage.getItem('user-initials') !== null);
+    scored.push(localStorage.getItem('user-score') !== null);
     var timeInterval = setInterval (() => {
         if(timerTime > 0){
             timerTime--;
@@ -103,20 +110,22 @@ function timerStart(){
             console.log(`Time remaining: ${timerTime}`);
         }
        
-        else if(timerTime === 0 || questionsAsked.length ===  10){
+        else if(timerTime === 0 || questionsAsked.length ===  10 && !isSave){
             clearInterval(timeInterval);
             timerTime = 300;
             highScore = (score + timerTime);
+            inputedInitials.push(prompt('Please enter Initials'));
+            scored.push(prompt('Please enter Initials'));
             if(questionsAsked.length === 10){
                 console.log("Quiz Completed Calculating Results!");
             }
-            inputedInitials.push(prompt('Please enter Initials'));
+            
             for(i=0;i<inputedInitials.length;i++){
                 userInitials.textContent = inputedInitials[i];
             }
             scoreCard.textContent = highScore;
             localStorage.setItem('user-score', highScore);
-            localStorage.setItem('user-initials',userInitials[-1]);
+            localStorage.setItem('user-initials',userInitials);
             
 
         }
@@ -131,7 +140,6 @@ answerOne.addEventListener('click', function (event){
     if(correct == clicked){
         if(questionsAsked.length === 10){
             timerTime = 0;
-            return;
         }
         currentQuestionIndex++;
         score++;
@@ -148,7 +156,6 @@ answerTwo.addEventListener('click', function (event){
         
         if(questionsAsked.length === 10){
             timerTime = 0;
-            return;
         }
         currentQuestionIndex++;
         score++;
@@ -166,7 +173,6 @@ answerThree.addEventListener('click', function (event){
     if(correct == clicked){
         if(questionsAsked.length === 10){
             timerTime = 0;
-            return;
         }
         currentQuestionIndex++;
         score++;
@@ -184,7 +190,6 @@ answerFour.addEventListener('click', function (event){
         
         if(questionsAsked.length === 10){
             timerTime = 0;
-            return;
         }
         currentQuestionIndex++;
         score++;
@@ -199,9 +204,16 @@ answerFour.addEventListener('click', function (event){
 });
 // add event listener to start button
 startButton.addEventListener('click', function (event){
+    startButton.disabled = true;
+    saveButton.disabled = false;
     timerStart();
     console.log('Started');
     
+    
 });
+saveButton.addEventListener('click', function (event){
+    timerTime=0;
+    saveButton.disabled = true;
+    startButton.disabled = false;
 
-
+});
